@@ -61,7 +61,6 @@ class Quattro(Robot):
             # Pick solution with arms pointing outwards
             if abs(theta1) <= pi / 2 :
                 if theta1 < 0:
-                    # theta1 = theta1 +2*pi
                     raise WorkspaceViolation
                 elif theta1 > pi:
                     theta1 = theta1-2*pi
@@ -70,7 +69,6 @@ class Quattro(Robot):
             else:
                 theta2 = 2 * atan2((-F - p), denom)
                 if theta2 < 0:
-                    # theta2 = theta2 +2*pi
                     raise WorkspaceViolation
                 elif theta2 > pi:
                     theta2 = theta2-2*pi
