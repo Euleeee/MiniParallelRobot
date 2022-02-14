@@ -150,9 +150,20 @@ class Runtime:
         Selects a random demo programm and executes it
         """
         modules = []
-        for a in dir(demo):
-            if isinstance(getattr(demo, a), types.FunctionType):
-                modules.append(getattr(demo, a))
+        if self.robot.dof == 6:
+            for a in dir(demo.sixRUS):
+                if isinstance(getattr(demo.sixRUS, a), types.FunctionType):
+                    modules.append(getattr(demo.sixRUS, a))
+
+        if self.robot.dof == 3:
+            for a in dir(demo.delta):
+                if isinstance(getattr(demo.delta, a), types.FunctionType):
+                    modules.append(getattr(demo.delta, a))
+
+        if self.robot.dof == 4:
+            for a in dir(demo.quattro):
+                if isinstance(getattr(demo.quattro, a), types.FunctionType):
+                    modules.append(getattr(demo.quattro, a))
 
         prog = random.choice(modules)  # choose a random demo
         demo_pos_list = prog()  # execute chosen demo programm
