@@ -36,7 +36,7 @@ class Quattro:
 
         return circle_pos
 
-class delta:
+class Delta:
     
     def triangle(half_side_length=30, robot_height=-100, n=2):
         """Calculates coordinates for a samesided triangle

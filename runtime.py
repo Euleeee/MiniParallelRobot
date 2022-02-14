@@ -156,14 +156,14 @@ class Runtime:
                     modules.append(getattr(demo.sixRUS, a))
 
         if self.robot.dof == 3:
-            for a in dir(demo.delta):
-                if isinstance(getattr(demo.delta, a), types.FunctionType):
-                    modules.append(getattr(demo.delta, a))
+            for a in dir(demo.Delta):
+                if isinstance(getattr(demo.Delta, a), types.FunctionType):
+                    modules.append(getattr(demo.Delta, a))
 
         if self.robot.dof == 4:
-            for a in dir(demo.quattro):
-                if isinstance(getattr(demo.quattro, a), types.FunctionType):
-                    modules.append(getattr(demo.quattro, a))
+            for a in dir(demo.Quattro):
+                if isinstance(getattr(demo.Quattro, a), types.FunctionType):
+                    modules.append(getattr(demo.Quattro, a))
 
         prog = random.choice(modules)  # choose a random demo
         demo_pos_list = prog()  # execute chosen demo programm
