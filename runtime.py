@@ -32,10 +32,12 @@ class Runtime:
         robot_str = robot.strip().lower()
 
         if robot_str == '6rus':
+            #TODO: Step Delay prüfen
             self.robot = SixRUS(stepper_mode=1 / 32, step_delay=0.002)
         elif robot_str == 'quattro':
-            self.robot = Quattro(stepper_mode=1 / 32, step_delay=0.002)
+            self.robot = Quattro(stepper_mode=1 / 32, step_delay=0.004)
         elif robot_str == 'delta':
+            #TODO: Step Delay prüfen
             self.robot = Delta(stepper_mode=1 / 32, step_delay=0.002)
         else:
             raise ValueError(f"Unknown robot type: {robot}")
