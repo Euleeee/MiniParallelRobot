@@ -38,7 +38,7 @@ class Quattro:
 
         return pos_square
 
-    def triangle(half_side_length=30, n=3, minHeight = -240.2, level = 60, endLevel = 30):
+    def triangle(half_side_length=35, n=3, minHeight = -240.2, level = 60, endLevel = 30):
         """Calculates coordinates for a samesided triangle
             `halfSideLength`: half sidelength of the triangle
             `minHeight`: lowest posible z-Coordinate 
@@ -180,7 +180,7 @@ class Quattro:
 
         return pyramide_pos
 
-    def pick_place(distx=20, disty=20, mid_dist=18, lin_height=20, minHeight = -240.2, level= 50, endLevel = 30, defaultLevel= 70):
+    def pick_place(distx=15, disty=10, mid_dist=20, lin_height=20, minHeight = -240.2, level= 50, endLevel = 30, defaultLevel= 80):
         """Calculates coordinates for a 3x2 palette
             `distx`: Distance between the palette places in x direction
             `disty`: Distance between the palette places in y direction
