@@ -178,7 +178,7 @@ class Quattro:
 
         return pyramide_pos
 
-    def pick_place(distx=20, disty=20, mid_dist=15, lin_height=20, minHeight = -240.2, level= 60, endLevel = 30, defaultLevel= 80):
+    def pick_place(distx=15, disty=15, mid_dist=15, lin_height=20, minHeight = -240.2, level= 60, endLevel = 30, defaultLevel= 70):
         """Calculates coordinates for a 3x2 palette
             `distx`: Distance between the palette places in x direction
             `disty`: Distance between the palette places in y direction
@@ -255,7 +255,7 @@ class Quattro:
 
         return rectangle_pos
 
-    def cylinder(radius=35, resolution=40, minHeight = -240.2, lowerLevel= 40, upperLevel = 80,  endLevel = 30):
+    def cylinder(radius=32, resolution=40, minHeight = -240.2, lowerLevel= 40, upperLevel = 65,  endLevel = 30):
         """Calculates coordinates for a cylinder
         `radius`: Radius of the cylinder
         `resolution`: Number of circlepoints
@@ -289,7 +289,7 @@ class Quattro:
         cylinder_pos.append([0, 0, endHeight, 0, 0, 0, 'mov'])
         return cylinder_pos
 
-    def cone(max_radius=30, resolution=30, n=5, minHeight = -240.2, level= 40, endLevel = 30):
+    def cone(max_radius=25, resolution=30, n=5, minHeight = -240.2, level= 40, endLevel = 30):
         """Calculates coordinates for a spiral
         `maxRadius`: Max radius of the spiral
         `resolution`: Number of circlepoints of one circle
