@@ -4,7 +4,7 @@ import numpy as np
 
 class Quattro:
 
-    def square(half_side_length=30, n=2, minHeight = -240.2, level= 50, endLevel = 30):
+    def square(half_side_length=40, n=2, minHeight = -240.2, level = 75, endLevel = 30):
         """Calculates coordinates for a square
             `halfSideLength`: half length of the edge
             `n`: Number of rotations
@@ -38,7 +38,7 @@ class Quattro:
 
         return pos_square
 
-    def triangle(half_side_length=30, n=2, minHeight = -240.2, level= 50, endLevel = 30):
+    def triangle(half_side_length=40, n=2, minHeight = -240.2, level = 75, endLevel = 30):
         """Calculates coordinates for a samesided triangle
             `halfSideLength`: half sidelength of the triangle
             `minHeight`: lowest posible z-Coordinate 
@@ -61,6 +61,7 @@ class Quattro:
 
         h_half = (half_side_length * m.sqrt(3) / 2) / 2
         pos_triangle = []
+        pos_triangle.append([0, 0, robotHeight, 0, 0, 0, 'mov'])
 
         for _ in range(n):
             pos_triangle.append([-h_half, half_side_length, robotHeight, 0, 0, 0, 'mov'])
@@ -71,7 +72,7 @@ class Quattro:
         pos_triangle.append([0, 0, endHeight, 0, 0, 0, 'mov'])
         return pos_triangle
 
-    def circle(radius=40, resolution=50, n=2, dirCirc=1, minHeight = -240.2, level= 50, endLevel = 30):
+    def circle(radius=40, resolution=50, n=2, dirCirc=1, minHeight = -240.2, level = 75, endLevel = 30):
         """Calculates coordinates for a 2D-circle
             `radius`: Radius of the circle
             `resolution`: Number of circlepoints
@@ -89,6 +90,7 @@ class Quattro:
 
         t = np.linspace(0, n * 2 * m.pi, resolution * n)
         circle_pos = []
+        circle_pos.append([0, 0, robotHeight, 0, 0, 0, 'mov'])
         
         circle_pos.append([0, 0, robotHeight, 0, 0, 0, 'mov'])
         circle_pos.append([radius, 0, robotHeight, 0, 0, 0, 'lin'])
@@ -108,7 +110,7 @@ class Quattro:
 
         return circle_pos
 
-    def eight(radius=15, resolution=30, n=1, minHeight = -240.2, level= 50, endLevel = 30):
+    def eight(radius=20, resolution=30, n=1, minHeight = -240.2, level = 75, endLevel = 30):
         """Calculates coordinates for a 2D-eight
             `radius`: Radius of one of the two circles
             `resolution`: Number of circlepoints
@@ -126,6 +128,7 @@ class Quattro:
         n = max(1, n)
         t = np.linspace(0, n * 2 * m.pi, resolution * n)
         eight_pos = []
+        eight_pos.append([0, 0, robotHeight, 0, 0, 0, 'mov'])
         for num in t:
             x = -m.sin(num) * radius
             y = m.cos(num) * radius - radius
@@ -141,7 +144,7 @@ class Quattro:
         eight_pos.append([0, 0, endHeight, 0, 0, 0, 'mov'])
         return eight_pos
 
-    def pyramide(half_side_length=30, minHeight = -240.2, level= 50, endLevel = 30):
+    def pyramide(half_side_length=40, minHeight = -240.2, level= 50, endLevel = 30):
         """Calculates coordinates for a tetrahedron
             `halfSideLength`: half sidelength of the tetrahedron
             `minHeight`: lowest posible z-Coordinate 
@@ -155,6 +158,7 @@ class Quattro:
         h_base_half = (half_side_length * m.sqrt(3) / 2) / 2
         h_tetra = m.sqrt(6) * half_side_length / 3
         pyramide_pos = [
+            [0, 0, robotHeight, 0, 0, 0, 'mov'],
 
             [0, 0, robotHeight + h_tetra, 0, 0, 0, 'mov'],
             [-h_base_half, -half_side_length, robotHeight, 0, 0, 0, 'lin'],
@@ -174,7 +178,7 @@ class Quattro:
 
         return pyramide_pos
 
-    def pick_place(distx=15, disty=15, mid_dist=20, lin_height=20, minHeight = -240.2, level= 50, endLevel = 30, defaultLevel= 70):
+    def pick_place(distx=20, disty=20, mid_dist=25, lin_height=20, minHeight = -240.2, level= 60, endLevel = 30, defaultLevel= 80):
         """Calculates coordinates for a 3x2 palette
             `distx`: Distance between the palette places in x direction
             `disty`: Distance between the palette places in y direction
@@ -193,6 +197,7 @@ class Quattro:
         defaultHeight = minHeight + defaultLevel
 
         pick_place_pos = []
+        pick_place_pos.append([0, 0, robotHeight, 0, 0, 0, 'mov'])
         y_count = [0, 1]
         x_count = [-1, 0, 1]
 
@@ -219,7 +224,7 @@ class Quattro:
         pick_place_pos.append([0, 0, endHeight, 0, 0, 0, 'mov'])
         return pick_place_pos
 
-    def rectangle_signal(flank_height=50, flank_width=15, minHeight = -240.2, level= 50, endLevel = 30):
+    def rectangle_signal(flank_height=60, flank_width=25, minHeight = -240.2, level = 75, endLevel = 30):
         """Calculates coordinates for rectangle Signal
         `flankHeight`: Flank height
         `flankWidth`: Flank width
@@ -233,7 +238,8 @@ class Quattro:
         robotHeight = minHeight + level
         endHeight = minHeight + endLevel
 
-        rectangle_pos = [[flank_height / 2, -2.5 * flank_width, robotHeight, 0, 0, 0, 'mov'],
+        rectangle_pos = [[0, 0, robotHeight, 0, 0, 0, 'mov'],
+                        [flank_height / 2, -2.5 * flank_width, robotHeight, 0, 0, 0, 'mov'],
                         [-flank_height / 2, -2.5 * flank_width, robotHeight, 0, 0, 0, 'lin'],
                         [-flank_height / 2, -1.5 * flank_width, robotHeight, 0, 0, 0, 'lin'],
                         [flank_height / 2, -1.5 * flank_width, robotHeight, 0, 0, 0, 'lin'],
@@ -249,7 +255,7 @@ class Quattro:
 
         return rectangle_pos
 
-    def cylinder(radius=25, resolution=30, minHeight = -240.2, lowerLevel= 40, upperLevel = 60,  endLevel = 30):
+    def cylinder(radius=35, resolution=40, minHeight = -240.2, lowerLevel= 50, upperLevel = 95,  endLevel = 30):
         """Calculates coordinates for a cylinder
         `radius`: Radius of the cylinder
         `resolution`: Number of circlepoints
@@ -267,6 +273,7 @@ class Quattro:
 
         t = np.linspace(0, 2 * m.pi, resolution)
         cylinder_pos = []
+        cylinder_pos.append([0, 0, down_circ, 0, 0, 0, 'mov'])
         for num in t:
             x = -m.cos(num) * radius
             y = m.sin(num) * radius
@@ -282,7 +289,7 @@ class Quattro:
         cylinder_pos.append([0, 0, endHeight, 0, 0, 0, 'mov'])
         return cylinder_pos
 
-    def cone(max_radius=25, resolution=30, n=5, minHeight = -240.2, level= 40, endLevel = 30):
+    def cone(max_radius=30, resolution=30, n=6, minHeight = -240.2, level= 40, endLevel = 30):
         """Calculates coordinates for a spiral
         `maxRadius`: Max radius of the spiral
         `resolution`: Number of circlepoints of one circle
@@ -300,6 +307,7 @@ class Quattro:
         t = np.linspace(0, n * 2 * m.pi, n * resolution)
         r = np.linspace(2, max_radius, n * resolution)
         spiral_pos = []
+        spiral_pos.append([0, 0, robotHeight, 0, 0, 0, 'mov'])
 
         for i, num in enumerate(t):
             x = -m.cos(num) * r[i]
@@ -311,7 +319,7 @@ class Quattro:
 
         return spiral_pos
 
-    def elaborated_curve(radius=20, resolution=28, distx=20, disty=20, lines=30, minHeight = -240.2, level= 50, endLevel = 30):
+    def elaborated_curve(radius=20, resolution=28, distx=20, disty=20, lines=30, minHeight = -240.2, level = 75, endLevel = 30):
         """Calculates coordinates for a 2D-Model
             `radius`: Radius of the circle
             `resolution`: Number of circlepoints, must be a multiple of 4
@@ -334,6 +342,7 @@ class Quattro:
 
         t = np.linspace(0, m.pi / 2, int(resolution / 4))
         elaborated_curve_pos = []
+        elaborated_curve_pos.append([0, 0, robotHeight, 0, 0, 0, 'mov'])
         for num in t:
             x = m.cos(num) * radius - distx
             y = -m.sin(num) * radius + disty
