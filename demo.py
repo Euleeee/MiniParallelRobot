@@ -4,7 +4,7 @@ import numpy as np
 
 class Quattro:
 
-    def square(half_side_length=40, n=2, minHeight = -240.2, level = 75, endLevel = 30):
+    def square(half_side_length=40, n=2, minHeight = -240.2, level = 60, endLevel = 30):
         """Calculates coordinates for a square
             `halfSideLength`: half length of the edge
             `n`: Number of rotations
@@ -38,7 +38,7 @@ class Quattro:
 
         return pos_square
 
-    def triangle(half_side_length=40, n=2, minHeight = -240.2, level = 75, endLevel = 30):
+    def triangle(half_side_length=40, n=2, minHeight = -240.2, level = 60, endLevel = 30):
         """Calculates coordinates for a samesided triangle
             `halfSideLength`: half sidelength of the triangle
             `minHeight`: lowest posible z-Coordinate 
@@ -72,7 +72,7 @@ class Quattro:
         pos_triangle.append([0, 0, endHeight, 0, 0, 0, 'mov'])
         return pos_triangle
 
-    def circle(radius=40, resolution=50, n=2, dirCirc=1, minHeight = -240.2, level = 75, endLevel = 30):
+    def circle(radius=40, resolution=50, n=2, dirCirc=1, minHeight = -240.2, level = 60, endLevel = 30):
         """Calculates coordinates for a 2D-circle
             `radius`: Radius of the circle
             `resolution`: Number of circlepoints
@@ -110,7 +110,7 @@ class Quattro:
 
         return circle_pos
 
-    def eight(radius=20, resolution=30, n=1, minHeight = -240.2, level = 75, endLevel = 30):
+    def eight(radius=20, resolution=30, n=1, minHeight = -240.2, level = 60, endLevel = 30):
         """Calculates coordinates for a 2D-eight
             `radius`: Radius of one of the two circles
             `resolution`: Number of circlepoints
@@ -178,7 +178,7 @@ class Quattro:
 
         return pyramide_pos
 
-    def pick_place(distx=20, disty=20, mid_dist=25, lin_height=20, minHeight = -240.2, level= 60, endLevel = 30, defaultLevel= 80):
+    def pick_place(distx=20, disty=20, mid_dist=15, lin_height=20, minHeight = -240.2, level= 60, endLevel = 30, defaultLevel= 80):
         """Calculates coordinates for a 3x2 palette
             `distx`: Distance between the palette places in x direction
             `disty`: Distance between the palette places in y direction
@@ -224,7 +224,7 @@ class Quattro:
         pick_place_pos.append([0, 0, endHeight, 0, 0, 0, 'mov'])
         return pick_place_pos
 
-    def rectangle_signal(flank_height=60, flank_width=25, minHeight = -240.2, level = 75, endLevel = 30):
+    def rectangle_signal(flank_height=60, flank_width=25, minHeight = -240.2, level = 60, endLevel = 30):
         """Calculates coordinates for rectangle Signal
         `flankHeight`: Flank height
         `flankWidth`: Flank width
@@ -255,7 +255,7 @@ class Quattro:
 
         return rectangle_pos
 
-    def cylinder(radius=35, resolution=40, minHeight = -240.2, lowerLevel= 50, upperLevel = 95,  endLevel = 30):
+    def cylinder(radius=35, resolution=40, minHeight = -240.2, lowerLevel= 40, upperLevel = 80,  endLevel = 30):
         """Calculates coordinates for a cylinder
         `radius`: Radius of the cylinder
         `resolution`: Number of circlepoints
@@ -289,7 +289,7 @@ class Quattro:
         cylinder_pos.append([0, 0, endHeight, 0, 0, 0, 'mov'])
         return cylinder_pos
 
-    def cone(max_radius=30, resolution=30, n=6, minHeight = -240.2, level= 40, endLevel = 30):
+    def cone(max_radius=30, resolution=30, n=5, minHeight = -240.2, level= 40, endLevel = 30):
         """Calculates coordinates for a spiral
         `maxRadius`: Max radius of the spiral
         `resolution`: Number of circlepoints of one circle
@@ -319,7 +319,7 @@ class Quattro:
 
         return spiral_pos
 
-    def elaborated_curve(radius=20, resolution=28, distx=20, disty=20, lines=30, minHeight = -240.2, level = 75, endLevel = 30):
+    def elaborated_curve(radius=20, resolution=28, distx=20, disty=20, lines=30, minHeight = -240.2, level = 60, endLevel = 30):
         """Calculates coordinates for a 2D-Model
             `radius`: Radius of the circle
             `resolution`: Number of circlepoints, must be a multiple of 4
