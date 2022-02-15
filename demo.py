@@ -4,7 +4,7 @@ import numpy as np
 
 class Quattro:
 
-    def square(half_side_length=40, n=2, minHeight = -240.2, level = 60, endLevel = 30):
+    def square(half_side_length=35, n=2, minHeight = -240.2, level = 60, endLevel = 30):
         """Calculates coordinates for a square
             `halfSideLength`: half length of the edge
             `n`: Number of rotations
@@ -38,7 +38,7 @@ class Quattro:
 
         return pos_square
 
-    def triangle(half_side_length=40, n=2, minHeight = -240.2, level = 60, endLevel = 30):
+    def triangle(half_side_length=30, n=3, minHeight = -240.2, level = 60, endLevel = 30):
         """Calculates coordinates for a samesided triangle
             `halfSideLength`: half sidelength of the triangle
             `minHeight`: lowest posible z-Coordinate 
@@ -64,11 +64,13 @@ class Quattro:
         pos_triangle.append([0, 0, robotHeight, 0, 0, 0, 'mov'])
 
         for _ in range(n):
-            pos_triangle.append([-h_half, half_side_length, robotHeight, 0, 0, 0, 'mov'])
-            pos_triangle.append([-h_half, -half_side_length, robotHeight, 0, 0, 0, 'lin'])
             pos_triangle.append([h_half, 0, robotHeight, 0, 0, 0, 'lin'])
+            pos_triangle.append([-h_half, half_side_length, robotHeight, 0, 0, 0, 'lin'])
+            pos_triangle.append([-h_half, -half_side_length, robotHeight, 0, 0, 0, 'lin'])
+            
 
-        pos_triangle.append([-h_half, half_side_length, robotHeight, 0, 0, 0, 'lin'])
+        pos_triangle.append([h_half, 0, robotHeight, 0, 0, 0, 'lin'])
+        pos_triangle.append([0, 0, robotHeight, 0, 0, 0, 'mov'])
         pos_triangle.append([0, 0, endHeight, 0, 0, 0, 'mov'])
         return pos_triangle
 
@@ -144,7 +146,7 @@ class Quattro:
         eight_pos.append([0, 0, endHeight, 0, 0, 0, 'mov'])
         return eight_pos
 
-    def pyramide(half_side_length=40, minHeight = -240.2, level= 50, endLevel = 30):
+    def pyramide(half_side_length=30, minHeight = -240.2, level= 50, endLevel = 30):
         """Calculates coordinates for a tetrahedron
             `halfSideLength`: half sidelength of the tetrahedron
             `minHeight`: lowest posible z-Coordinate 
