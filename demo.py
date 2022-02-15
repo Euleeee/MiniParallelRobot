@@ -178,7 +178,7 @@ class Quattro:
 
         return pyramide_pos
 
-    def pick_place(distx=15, disty=15, mid_dist=15, lin_height=20, minHeight = -240.2, level= 60, endLevel = 30, defaultLevel= 70):
+    def pick_place(distx=20, disty=20, mid_dist=18, lin_height=20, minHeight = -240.2, level= 50, endLevel = 30, defaultLevel= 70):
         """Calculates coordinates for a 3x2 palette
             `distx`: Distance between the palette places in x direction
             `disty`: Distance between the palette places in y direction
