@@ -7,6 +7,7 @@ from threading import RLock
 from typing import Dict
 
 import pygame
+import numpy
 
 from ps5_mapping import *
 
